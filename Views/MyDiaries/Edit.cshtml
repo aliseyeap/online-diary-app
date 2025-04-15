@@ -1,0 +1,79 @@
+﻿@model OnlineDiary.Models.MyDiary
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit My Diary ✏️</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MyDiaryId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <p></p>
+            <div class="col-md-2">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label asp-for="Entry" class="control-label"></label>
+                <textarea asp-for="Entry" class="form-control fixed-height"></textarea>
+                <span asp-validation-for="Entry" class="text-danger"></span>
+            </div>
+            <p></p>
+            <div class="form-group d-flex justify-content-start">
+                <button type="submit" class="btn btn-success me-2 custom-btn">
+                    Save 💾
+                </button>
+                <a asp-action="Index" class="btn btn-danger custom-btn">
+                    Cancel ❌
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .custom-btn {
+        transition: all 0.3s ease;
+        color: #fff;
+    }
+
+    .btn-success {
+        background-color: limegreen;
+        border-color: limegreen;
+    }
+
+    .btn-danger {
+        background-color: lightsalmon;
+        border-color: lightsalmon;
+    }
+
+    .custom-btn:hover {
+        background-color: #fff !important;
+        color: #000 !important; 
+        border-color: #ddd; 
+    }
+
+    .fixed-height {
+        height: 200px;
+        resize: vertical;
+    }
+</style>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

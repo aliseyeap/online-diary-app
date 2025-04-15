@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+	<meta charset="utf-8">
+</head>
+<body link="#000" alink="#017bf5" vlink="#000">
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<h1 align="center">
+		<font face="Times New Roman" color="#CD5C5C" size="7">
+			RECORD YOUR DAY WITH
+		</font>
+		<font face="Courier New" color="#FFA07A" size="8">
+			<b>OnlyMe</b>
+		</font>
+	</h1>
+	<h3 align="center">
+		<font face="Times New Roman" color="#FA8072" size="5">
+			Record your daily events, thoughts and feelings.
+		</font>
+	</h3>
+	<br />
+	@if (!User.Identity.IsAuthenticated)
+	{
+		<h3 align="center">
+			<a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">
+			<font face="Courier New" color="#CD5C5C" size="4">Login now to get access!</font>
+			</a>
+	</h3>}
+</body>

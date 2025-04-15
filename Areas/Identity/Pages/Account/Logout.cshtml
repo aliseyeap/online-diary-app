@@ -1,0 +1,38 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    @{
+        if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" onsubmit="return confirmLogout()">
+                <button type="submit" class="nav-link btn btn-link text-dark">Confirm Logout</button>
+            </form>
+        }
+        else
+        {
+            <p>You have successfully logged out of the application.</p>
+        }
+    }
+</header>
+
+<script>
+    function confirmLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+            localStorage.setItem("logoutSuccess", "true");
+            return true;  
+        }
+        return false;  
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem("logoutSuccess") === "true") {
+            alert("Successfully logged out!");
+            localStorage.removeItem("logoutSuccess");  
+        }
+    });
+</script>

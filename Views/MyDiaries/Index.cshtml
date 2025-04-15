@@ -1,0 +1,94 @@
+﻿@model IEnumerable<OnlineDiary.Models.MyDiary>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="color: #A0522D;">My Diary 📒</h1>
+
+<!-- Alert Display for Success Messages -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert" style="font-size: 16px; color: #fff; background-color: #6B8E23; border-color: #6B8E23;">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+        // Auto-dismiss alert after 5 seconds
+        setTimeout(function () {
+            var alertElement = document.getElementById("success-alert");
+            if (alertElement) {
+                var bootstrapAlert = new bootstrap.Alert(alertElement);
+                bootstrapAlert.close();  
+            }
+        }, 5000); 
+    </script>
+}
+
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn btn-success custom-btn"
+       style="background-color: #6B8E23; border-color: #6B8E23; color: #fff;">Add New ✚ </a>
+</div>
+
+<table class="table" style="font-size: 16px;">
+    <thead>
+        <tr style="color: #A0522D;">
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry)
+            </th>
+            <th style="text-align: center;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="color: #A0522D;">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entry)
+                </td>
+                <td class="text-center">
+                    <a asp-action="Details" asp-route-id="@item.MyDiaryId"
+                       class="btn btn-sm me-1 shadow-sm custom-btn"
+                       style="background-color: #CD853F; border-color: #CD853F; color: #fff;">
+                        View 🔍
+                    </a> 
+                    <a asp-action="Edit" asp-route-id="@item.MyDiaryId"
+                       class="btn btn-sm me-1 shadow-sm custom-btn"
+                       style="background-color: #D2691E; border-color: #D2691E; color: #fff;">
+                        Edit ✏️
+                    </a> 
+                    <a asp-action="Delete" asp-route-id="@item.MyDiaryId"
+                       class="btn btn-sm me-1 shadow-sm custom-btn"
+                       style="background-color: #8B4513; border-color: #8B4513; color: #fff;">
+                        Delete 🗑️
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .custom-btn {
+        transition: all 0.3s ease;
+    }
+
+        .custom-btn:hover {
+            color: #000 !important;
+            background-color: #fff !important;
+        }
+</style>

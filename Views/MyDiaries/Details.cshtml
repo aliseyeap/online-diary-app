@@ -1,0 +1,49 @@
+﻿@model OnlineDiary.Models.MyDiary
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h1>@Html.DisplayFor(model => model.Title)</h1>
+    <p></p>
+    <h6>@Html.DisplayFor(model => model.Date)</h6>
+    <hr />
+    <h4>@Html.DisplayFor(model => model.Entry)</h4>
+    <hr />
+</div>
+
+<!-- Buttons aligned to the left side -->
+<div class="d-flex justify-content-start mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.MyDiaryId" class="btn btn-warning me-2 custom-btn">
+        Edit ✏️
+    </a>
+    <a asp-action="Index" class="btn btn-secondary custom-btn">
+        Back 🔙
+    </a>
+</div>
+
+<style>
+    .custom-btn {
+        transition: all 0.3s ease;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .btn-warning {
+        background-color: #D2691E;
+        border-color: #D2691E;
+    }
+
+    .btn-secondary {
+        background-color: lightgray; 
+        border-color: lightgrey;
+    }
+
+    .custom-btn:hover {
+        background-color: #fff !important;
+        color: #000 !important; 
+        border-color: #ddd; 
+    }
+</style>

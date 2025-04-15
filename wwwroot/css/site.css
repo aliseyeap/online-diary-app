@@ -1,0 +1,54 @@
+html {
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-color: #FFF9F7;
+    margin-bottom: 60px;
+    font-family: 'Times New Roman';
+    color: #943126;
+}
+
+.btn {
+    background-color: #CD5C5C;
+    border-color: #F8F8F8;
+}
+
+.btn:focus{
+    background-color: #CD5C5C;
+    border-color: #F8F8F8;
+}
+
+    .btn:hover {
+        background-color: #B05050;
+        border-color: #F8F8F8;
+    }
+
+.link {
+    font-family: 'Times New Roman';
+    color: #CD5C5C;
+}
+
+    .link:hover {        
+        color: #943126;
+    }
+
+.nav-pills .nav-link.active {
+    color: #fff;
+    background-color: #CD5C5C;
+}
+
+.nav-pills .nav-link {
+    color: #CD5C5C;
+}
